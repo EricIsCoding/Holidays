@@ -35,7 +35,11 @@ if yes:
 
 [List holidays]
 
+Would you like to calculate the number of your remaining work days?
+
 if no:
+
+if yes:
 
 What days of the week do you normally work? Please enter one at a time. (M, Tu, W, Th, F, Sa, Su)
 
@@ -69,7 +73,7 @@ if yes:
 
 if no:
 
-Thank you for using Working Days! Have a great day!
+[Exit Message]
 
 ## Classes
 

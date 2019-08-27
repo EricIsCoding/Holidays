@@ -1,6 +1,6 @@
 # WorkingDays
 
-Hello, World! This gem is a work-in-progress, and was created as the first project for my Flatiron School bootcamp. This gem utilizes the "Nager.Date" API to calclulate the number of working days you have left in the year. 
+Hello, World! This gem is a work-in-progress, and was created as the first project for my Flatiron School Cohort's CLI Data Gem Project. This gem utilizes the "Nager.Date" API and user input to calclulate the number of working days they have left in the calendar year. This gem can also be used to list the year's remaining public holiday by country as well as past and future holidays by country and year. 
 
 ## Installation
 
