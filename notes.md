@@ -1,13 +1,17 @@
 ## Plan
 
-1. Create Repo X
-2. Set-up File Structure
-3. Create Classes
-4. Create Modules
-5. Create Associations
-6. Create CLI
-7. Connect Everything
-8. Profit???
+1 = Completed
+
+O = In progress
+
+1. Create Repo [ 1 ]
+2. Set-up File Structure [ 1 ]
+3. Create Classes [ O ]
+4. Create Modules [ O ]
+5. Create Associations [ O ]
+6. Create CLI [ O ]
+7. Connect Everything [ O ]
+8. Profit??? [ O ]
 
 ## Mock-up
 
