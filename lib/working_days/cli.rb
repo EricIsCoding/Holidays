@@ -25,5 +25,22 @@ class WorkingDays::CLI
     end
 
     def menu
+        puts <<~DOC
+        What would you like to do? Choose from the list below.
+        1. List all public holidays.
+        2. Calculate work days.
+        DOC
+        input = gets.strip
+        case input
+        when "1"
+            puts "Here are your holidays"
+            # list_holidays
+        when "2"
+            # calculate_work_days
+            puts "You work [number of working days] more days this year."
+        else
+            puts "That option is invalid."
+            menu
+        end
     end
 end
