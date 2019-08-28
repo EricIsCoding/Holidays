@@ -6,7 +6,10 @@ class WorkingDays::CLI
     end
 
     def call
-        puts "Welcome to Working Days!"
-        puts "Before we begin, I will need a bit of information from you."
+        puts <<~DOC
+        Welcome to Working Days!
+        Before we begin, I will need a bit of information from you.
+        DOC
+        
     end
 end
