@@ -1,6 +1,8 @@
-require "working_days/version"
+require_relative "working_days/version"
 
 module WorkingDays
   class Error < StandardError; end
-  # Your code goes here...
+  
+  def initialize
+  end
 end

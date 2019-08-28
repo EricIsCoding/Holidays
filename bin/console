@@ -4,7 +4,6 @@ require "bundler/setup"
 require "working_days"
 require "open_uri"
 require "pry"
-Pry.start
+
 
 require "irb"
-IRB.start(__FILE__)
