@@ -1,0 +1,2 @@
+class WorkingDays::Calculator
+end
