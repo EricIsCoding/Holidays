@@ -1,16 +1,16 @@
 class WorkingDays::API
-    attr_reader :holidays, :year, :country
 
-    def initialize(year, country)
-        @year = year.to_i
-        @country = country
+    def get_next(country)
+        parse(HTTParty.get("https://date.nager.at/api/v2/nextpublicholidays/#{country}"))
     end
 
-    def get_next
-        response = HTTParty.get("https://date.nager.at/api/v2/nextpublicholidays/#{@country}")
+    def get_year(country, year)
+        parse(HTTParty.get("https://date.nager.at/api/v2/publicholidays/#{year}/#{country}"))
     end
 
-    def get_year
-        response = HTTParty.get("https://date.nager.at/api/v2/publicholidays/#{@year}/#{@country}")
+    def parse(response)
+        @repsonse.each do |holiday|
+            WorkingDays::Holiay.new(holiday["name"], holiday["date"], holiday["global"])
+        end
     end
 end
