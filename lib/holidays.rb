@@ -1,6 +1,6 @@
-require_relative "working_days/version"
+require_relative "holidays/version"
 
-module WorkingDays
+module Holidays
   class Error < StandardError; end
   
   def initialize

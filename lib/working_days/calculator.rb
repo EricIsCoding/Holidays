@@ -1,2 +1,0 @@
-class WorkingDays::Calculator
-end

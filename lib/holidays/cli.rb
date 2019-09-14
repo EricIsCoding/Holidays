@@ -1,6 +1,6 @@
 #This is our CLI controller
 
-class WorkingDays::CLI
+class Holidays::CLI
 
     def initialize
     end
@@ -14,9 +14,13 @@ class WorkingDays::CLI
     def get_user_info
         puts <<~DOC
         Before we begin, I will need a bit of information from you.
-        What year is it? (ex. 2019)
+        What year is it? (1900 - 2100)
         DOC
-        year = gets.strip
+        year = gets.strip.to_i
+        until year >= 1900 && year <= 2100
+            puts "Please enter a valid year."
+            year = gets.strip.to_i
+        end
         puts <<~DOC
         What country are you from? Please use your country's 2 letter country code. (IE: US, CA, UK)
         Find a list of available countries here: http://bit.ly/api_countrycodes
@@ -27,16 +31,16 @@ class WorkingDays::CLI
     def menu
         puts <<~DOC
         What would you like to do? Choose a number from the list below. Type 'exit' to exit and 'h' to see the list again.
-        1. List Holidays
-        2. Calculate Work Days
+        1. List Your Remaining Holidays
+        2. List Other Holidays
         DOC
         while @input != "exit"
             @input = gets.strip
             case @input
             when "1"
-                list_holidays
+                list_remaining_holidays
             when "2"
-                calculate_work_days
+                list_other_holidays
             when 'h'
                 puts <<~DOC
                 Please choose an option from the list below.
@@ -50,5 +54,11 @@ class WorkingDays::CLI
                 puts "That option is invalid."
             end
         end
+    end
+
+    def list_remaining_holidays
+    end
+
+    def list
     end
 end

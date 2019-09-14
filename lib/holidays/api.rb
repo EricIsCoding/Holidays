@@ -1,4 +1,4 @@
-class WorkingDays::API
+class Holidays::API
 
     def self.get_next(country)
         parse(HTTParty.get("https://date.nager.at/api/v2/nextpublicholidays/#{country}"))
@@ -10,7 +10,7 @@ class WorkingDays::API
 
     def self.parse(response)
         @repsonse.each do |holiday|
-            WorkingDays::Holiay.new(holiday["name"], holiday["date"], holiday["global"])
+            Holidays::Holiay.new(holiday["name"], holiday["date"], holiday["global"])
         end
     end
 end
