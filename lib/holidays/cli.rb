@@ -11,8 +11,8 @@ class Holidays::CLI
     def call
         puts "Welcome to Working Days!"
         puts <<~DOC
-        What country are you from? Please use your country's 2 letter country code. (IE: US, CA, UK)
-        Find a list of available countries here: http://bit.ly/holiday_countrycodes
+        What country are you from? Please use your country's 2 letter country code. (IE: US, CA, GB)
+        Find a list of available countries here: http://bit.ly/holidays_countrycodes
         DOC
         get_country
         menu
@@ -21,7 +21,7 @@ class Holidays::CLI
     def get_country
         @country = gets.strip.upcase
         until Holidays::SupportedCountries.countries.include?(@country)
-            puts "Please enter a valid country code from http://bit.ly/holiday_countrycodes:"
+            puts "Please enter a valid country code from http://bit.ly/holidays_countrycodes:"
             @country = gets.strip.upcase
         end
     end
