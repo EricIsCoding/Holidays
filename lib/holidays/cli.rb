@@ -9,7 +9,7 @@ class Holidays::CLI
     end
 
     def call
-        puts "Welcome to Working Days!"
+        puts "Welcome to Holidays!"
         puts <<~DOC
         What country are you from? Please use your country's 2 letter country code. (IE: US, CA, GB)
         Find a list of available countries here: http://bit.ly/holidays_countrycodes
@@ -48,12 +48,16 @@ class Holidays::CLI
             when 'h'
                 menu_options
             when 'exit'
-                puts "Thank you. Have a great day!"
-                exit
+               goodbye
             else
                 puts "That option is invalid."
             end
         end
+    end
+
+    def goodbye
+        puts "Thank you. Have a great day!"
+        exit
     end
 
     def menu_options
@@ -67,6 +71,7 @@ class Holidays::CLI
         Holidays::API.get_next(@country, @year)
         puts "Your remaining holidays are:\n\n"
         Holidays::CLI.print
+        detail_view
     end
 
     def list_all_holidays
@@ -108,5 +113,36 @@ class Holidays::CLI
     def list_year
         Holidays::API.get_year(@country, @year)
         Holidays::CLI.print
+        detail_view
+    end
+
+    def detail_view
+        puts "Enter a holiday number for more details, menu to return to the main menu, or exit to exit."
+        input = gets.strip
+        until input == "menu" || input == "exit"
+            index = input.to_i
+            if index == nil || index < 0 || index > Holidays::Holiday.all.length
+                puts "Please enter valid option."
+                input = gets.strip
+            else
+                puts <<~DOC
+                Holiday Name: #{Holidays::Holiday.all[index - 1].name}
+                Local Name: #{Holidays::Holiday.all[index - 1].local_name}
+                Date: #{Holidays::Holiday.all[index - 1].date}
+                Global: #{Holidays::Holiday.all[index - 1].global}
+                Fixed Date: #{Holidays::Holiday.all[index - 1].fixed}
+                Launch Year: #{Holidays::Holiday.all[index - 1].launch_year}
+                ________________________________________
+                
+                Please make another selection.
+                DOC
+                input = gets.strip
+            end
+        end
+        if input == "exit"
+            goodbye
+        else
+            menu
+        end   
     end
 end
