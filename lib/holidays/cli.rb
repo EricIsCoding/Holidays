@@ -78,7 +78,11 @@ class Holidays::CLI
         puts <<~DOC
         Would you like to change your year (#{@year}) or country (#{@country})? y/n
         DOC
-        input = gets.strip
+        input = gets.strip.downcase
+        until input == "y" || input == "n"
+            puts "That is not a valid option."
+            input = gets.strip.downcase
+        end
         case input
         when 'n'
             puts "Holidays for the Year #{@year} in #{@country}.\n\n"
