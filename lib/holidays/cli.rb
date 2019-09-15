@@ -127,18 +127,18 @@ class Holidays::CLI
         puts "Enter a holiday number for more details, menu to return to the main menu, or exit to exit."
         input = gets.strip
         until input == "menu" || input == "exit"
-            index = input.to_i
+            index = input.to_i - 1
             if index == nil || index < 0 || index > Holidays::Holiday.all.length
                 puts "Please enter valid option."
                 input = gets.strip
             else
                 puts <<~DOC
-                    Holiday Name: #{Holidays::Holiday.all[index - 1].name}
-                    Local Name: #{Holidays::Holiday.all[index - 1].local_name}
-                    Date: #{Holidays::Holiday.all[index - 1].date}
-                    Global: #{Holidays::Holiday.all[index - 1].global}
-                    Fixed Date: #{Holidays::Holiday.all[index - 1].fixed}
-                    Launch Year: #{Holidays::Holiday.all[index - 1].launch_year}
+                    Holiday Name: #{Holidays::Holiday.all[index].name}
+                    Local Name: #{Holidays::Holiday.all[index].local_name}
+                    Date: #{Holidays::Holiday.all[index].date}
+                    Global: #{Holidays::Holiday.all[index].global}
+                    Fixed Date: #{Holidays::Holiday.all[index].fixed}
+                    Launch Year: #{Holidays::Holiday.all[index].launch_year}
                 - - - - - - - - - - 
                 Please make another selection.
                 DOC
