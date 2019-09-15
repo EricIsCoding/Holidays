@@ -90,7 +90,12 @@ class Holidays::CLI
             2. Country
             3. Both
             DOC
+            
             input = gets.strip
+            until input == "1" || input == "2" || input == "3"
+                puts "Please make a valid selection."
+                input = gets.strip
+            end
             case input
             when "1"
                 puts "What year?"
@@ -106,6 +111,8 @@ class Holidays::CLI
                 puts "What country?"
                 get_country
                 list_year
+            else
+
             end
         end
     end
@@ -126,14 +133,13 @@ class Holidays::CLI
                 input = gets.strip
             else
                 puts <<~DOC
-                Holiday Name: #{Holidays::Holiday.all[index - 1].name}
-                Local Name: #{Holidays::Holiday.all[index - 1].local_name}
-                Date: #{Holidays::Holiday.all[index - 1].date}
-                Global: #{Holidays::Holiday.all[index - 1].global}
-                Fixed Date: #{Holidays::Holiday.all[index - 1].fixed}
-                Launch Year: #{Holidays::Holiday.all[index - 1].launch_year}
-                ________________________________________
-                
+                    Holiday Name: #{Holidays::Holiday.all[index - 1].name}
+                    Local Name: #{Holidays::Holiday.all[index - 1].local_name}
+                    Date: #{Holidays::Holiday.all[index - 1].date}
+                    Global: #{Holidays::Holiday.all[index - 1].global}
+                    Fixed Date: #{Holidays::Holiday.all[index - 1].fixed}
+                    Launch Year: #{Holidays::Holiday.all[index - 1].launch_year}
+                - - - - - - - - - - 
                 Please make another selection.
                 DOC
                 input = gets.strip
