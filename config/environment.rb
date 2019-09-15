@@ -5,7 +5,7 @@ require 'httparty'
 require 'date'
 
 module Concerns
-
+    
 end
 
 require_all "lib"

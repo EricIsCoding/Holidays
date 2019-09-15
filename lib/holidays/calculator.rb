@@ -1,2 +1,0 @@
-class Holidays::Calculator
-end
