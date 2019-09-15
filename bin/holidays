@@ -2,4 +2,4 @@
 
 require_relative "../config/environment"
 
-Holidays::CLI.new.call
+holidays = Holidays::CLI.new.call

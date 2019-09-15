@@ -1,5 +1,5 @@
 class Holidays::Holiday
-    attr_accessor :name, :date, :global
+    attr_accessor :name, :local_name, :date, :global, :fixed, :launch_year
 
     @@all = []
 
@@ -11,10 +11,7 @@ class Holidays::Holiday
         @@all = []
     end
 
-    def initialize(name, date = nil, global = true)
-        @name = name
-        @date = date
-        @global = global
+    def initialize
         @@all << self
     end
 end

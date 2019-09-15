@@ -16,7 +16,13 @@ class Holidays::API
     def self.parse(response)
         Holidays::Holiday.delete_all
         response.each do |holiday|
-            Holidays::Holiday.new(holiday["name"], holiday["date"], holiday["global"])
+            new_holiday = Holidays::Holiday.new
+            new_holiday.name = holiday["name"]
+            new_holiday.local_name = holiday["localName"]
+            new_holiday.date = holiday["date"]
+            new_holiday.global = holiday["global"]
+            new_holiday.fixed = holiday["fixed"]
+            new_holiday.launch_year = holiday["launchYear"] 
         end
     end
 end
