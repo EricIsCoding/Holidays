@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["ericiscoding"]
   spec.email         = ["ericjwilhite@gmail.com"]
 
-  spec.summary       = "This gem is used to calculate the remaining number of working days in the calendar year."
-  spec.description   = "This gem uses the Nager.Date API to calucluate the number of working days remaining. The API is used to "
+  spec.summary       = %q{This gem is used to list the holidays remaining in the year.}
+  spec.description   = %q{This gem uses the Date.Nager.At API to pull lists of holidays and display detail about the holidays listed.}
   spec.homepage      = "https://github.com/EricIsCoding/holidays"
   spec.license       = "MIT"
 
