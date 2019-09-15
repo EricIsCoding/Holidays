@@ -6,21 +6,12 @@ Hello, World! This gem is a work-in-progress, and was created as the first proje
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'working_days'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install this gem using
 
     $ gem install working_days
 
 ## Usage
 
-This gem is a work in progress. When completed, it will allow you to easily calculate the numer of working days you have left in the current year. 
 
 ## Contributing
 
