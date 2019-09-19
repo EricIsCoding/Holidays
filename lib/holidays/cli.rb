@@ -37,9 +37,9 @@ class Holidays::CLI
 
     def menu
         menu_options
+        input = gets.strip
         while @input != "exit"
-            @input = gets.strip
-            case @input
+            case input
             when "1"
                 list_remaining_holidays
                 menu_options
@@ -48,12 +48,11 @@ class Holidays::CLI
                 menu_options
             when 'h'
                 menu_options
-            when 'exit'
-               goodbye
             else
                 puts "That option is invalid."
             end
         end
+        goodbye   
     end
 
     def menu_options
@@ -83,7 +82,6 @@ class Holidays::CLI
         end
         case input
         when 'n'
-            puts "Holidays for the Year #{@year} in #{@country}.\n\n"
             list_year
         when 'y'
             puts <<~DOC
@@ -119,6 +117,8 @@ class Holidays::CLI
 
     def list_year
         Holidays::API.get_year(@country, @year)
+        puts "Holidays for the Year #{@year} in #{@country}:"
+        puts ""
         Holidays::CLI.print
         detail_view
     end
