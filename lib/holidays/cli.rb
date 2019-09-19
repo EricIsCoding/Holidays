@@ -1,11 +1,11 @@
 #This is our CLI controller
-
 class Holidays::CLI
 
     extend Concerns::Printable
 
     def initialize
         @year = Date.today.year
+        @country = nil
     end
 
     def call
@@ -15,6 +15,7 @@ class Holidays::CLI
         Find a list of available countries here: http://bit.ly/holidays_countrycodes
         DOC
         get_country
+        @user = Holidays::User.new(@country, @year)
         menu
     end
 
@@ -55,20 +56,17 @@ class Holidays::CLI
         end
     end
 
-    def goodbye
-        puts "Thank you. Have a great day!"
-        exit
-    end
-
     def menu_options
-        menu_options = "Please choose an option from the list below.\n1. List your remaining holidays\n2. List a full year of holidays\nType 'exit' or 'h' at any time to exit or to list the options again.."
         puts <<~DOC
-        #{menu_options}
+        Please choose an option from the list below.
+        1. List your remaining holidays
+        2. List a full year of holidays
+        Type 'exit' or 'h' at any time to exit or to list the options again.
         DOC
     end
 
     def list_remaining_holidays
-        Holidays::API.get_next(@country, @year)
+        Holidays::API.get_next(@user.country, @user.year)
         puts "Your remaining holidays are:\n\n"
         Holidays::CLI.print
         detail_view
@@ -115,8 +113,6 @@ class Holidays::CLI
                 puts "What country?"
                 get_country
                 list_year
-            else
-
             end
         end
     end
@@ -132,17 +128,19 @@ class Holidays::CLI
         input = gets.strip
         until input == "menu" || input == "exit"
             index = input.to_i - 1
-            if index == nil || index < 0 || index > Holidays::Holiday.all.length
+            if index == nil || index < 0 || index > Holidays::Holiday.all.length - 1
                 puts "Please enter valid option."
                 input = gets.strip
             else
                 puts <<~DOC
-                    Holiday Name: #{Holidays::Holiday.all[index].name}
+                        ~ ~ #{Holidays::Holiday.all[index].name}  ~ ~
+
                     Local Name: #{Holidays::Holiday.all[index].local_name}
                     Date: #{Holidays::Holiday.all[index].date}
                     Global: #{Holidays::Holiday.all[index].global}
                     Fixed Date: #{Holidays::Holiday.all[index].fixed}
                     Launch Year: #{Holidays::Holiday.all[index].launch_year}
+
                 - - - - - - - - - - 
                 Please make another selection.
                 DOC
@@ -154,5 +152,10 @@ class Holidays::CLI
         else
             menu
         end   
+    end
+
+    def goodbye
+        puts "Thank you. Have a great day!"
+        exit
     end
 end

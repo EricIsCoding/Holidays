@@ -11,7 +11,10 @@ class Holidays::Holiday
         @@all = []
     end
 
-    def initialize
+    def initialize(name, date, global)
+        @name = name
+        @date = date
+        @global = global
         @@all << self
     end
 end
