@@ -48,8 +48,10 @@ class Holidays::CLI
                 menu_options
             when 'h'
                 menu_options
+                @input = gets.strip
             else
                 puts "That option is invalid."
+                @input = gets.strip
             end
         end
         goodbye   
