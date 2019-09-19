@@ -1,6 +1,6 @@
 #This is our CLI controller
 class Holidays::CLI
-
+    include Concerns::SupportedCountries
     extend Concerns::Printable
 
     def initialize
@@ -21,7 +21,7 @@ class Holidays::CLI
 
     def get_country
         @country = gets.strip.upcase
-        until Holidays::SupportedCountries.countries.include?(@country)
+        until supported_countries.include?(@country)
             puts "Please enter a valid country code from http://bit.ly/holidays_countrycodes:"
             @country = gets.strip.upcase
         end

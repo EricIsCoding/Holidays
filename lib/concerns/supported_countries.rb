@@ -1,6 +1,6 @@
-class Holidays::SupportedCountries
+module Concerns::SupportedCountries
 
-        def self.countries
+        def supported_countries
                 @countries = [
                         # Andorra 
                         "AD",
