@@ -38,7 +38,7 @@ class Holidays::CLI
     def menu
         menu_options
         input = gets.strip
-        while @input != "exit"
+        while input != "exit"
             case input
             when "1"
                 list_remaining_holidays
@@ -48,10 +48,10 @@ class Holidays::CLI
                 menu_options
             when 'h'
                 menu_options
-                @input = gets.strip
+                input = gets.strip
             else
                 puts "That option is invalid."
-                @input = gets.strip
+                input = gets.strip
             end
         end
         goodbye   
